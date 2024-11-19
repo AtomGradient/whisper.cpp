@@ -18,18 +18,21 @@ let package = Package(
             name: "whisper",
             path: ".",
             exclude: [
-                "build",
-                "bindings",
-                "cmake",
-                "examples",
-                "scripts",
-                "models",
-                "samples",
-                "tests",
-                "CMakeLists.txt",
-                "Makefile",
-                "ggml/src/ggml-metal-embed.metal",
+               "build",
+               "bindings",
+               "cmake",
+               "examples",
+               "scripts",
+               "models",
+               "samples",
+               "tests",
+               "CMakeLists.txt",
+               "Makefile",
+               "ggml/src/ggml-metal-embed.metal"
+            ],
+            sources: [
                 "ggml/src/ggml.c",
+                "src/whisper.cpp",
                 "ggml/src/ggml-aarch64.c",
                 "ggml/src/ggml-alloc.c",
                 "ggml/src/ggml-backend.cpp",
@@ -37,13 +40,11 @@ let package = Package(
                 "ggml/src/ggml-quants.c",
                 "ggml/src/ggml-metal.m"
             ],
-            sources: [
-                "src/whisper.cpp"
-            ],
             resources: [.process("ggml/src/ggml-metal.metal")],
             publicHeadersPath: "spm-headers",
             cSettings: [
                 .unsafeFlags(["-Wno-shorten-64-to-32", "-O3", "-DNDEBUG"]),
+                .unsafeFlags(["-O"]),
                 .define("GGML_USE_ACCELERATE"),
                 .unsafeFlags(["-fno-objc-arc"]),
                 .define("GGML_USE_METAL")
