@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "atwhisper",
+    name: "whisper",
     platforms: [
         .macOS(.v12),
         .iOS(.v14),
@@ -11,11 +11,11 @@ let package = Package(
         .tvOS(.v14)
     ],
     products: [
-        .library(name: "atwhisper", targets: ["atwhisper"]),
+        .library(name: "whisper", targets: ["whisper"]),
     ],
     targets: [
         .target(
-            name: "atwhisper",
+            name: "whisper",
             path: ".",
             exclude: [
                "build",
@@ -44,7 +44,6 @@ let package = Package(
             publicHeadersPath: "spm-headers",
             cSettings: [
                 .unsafeFlags(["-Wno-shorten-64-to-32", "-O3", "-DNDEBUG"]),
-                .unsafeFlags(["-O"]),
                 .define("GGML_USE_ACCELERATE"),
                 .unsafeFlags(["-fno-objc-arc"]),
                 .define("GGML_USE_METAL")
