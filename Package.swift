@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "whisper",
+    name: "atwhisper",
     platforms: [
         .macOS(.v12),
         .iOS(.v14),
@@ -11,11 +11,11 @@ let package = Package(
         .tvOS(.v14)
     ],
     products: [
-        .library(name: "whisper", targets: ["whisper"]),
+        .library(name: "atwhisper", targets: ["atwhisper"]),
     ],
     targets: [
         .target(
-            name: "whisper",
+            name: "atwhisper",
             path: ".",
             exclude: [
                "build",
